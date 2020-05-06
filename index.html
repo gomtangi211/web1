@@ -14,13 +14,13 @@ var server_music='http://61.75.10.129:81/projects/';
 
 function onbutton()
 {
-   var p = $('p').text(); 
+   var p = $('p[name=name_p_audio]').text(); 
   
    var w = $('video').attr('width');
 
    var ww = p + ' : '+w;
 
-   $('p').text(ww);
+   $('p[name=name_p_audio]').text(ww);
 }
 
 
@@ -45,7 +45,7 @@ var p = $('p[name=name_p]').text(c);
 <p> div태그를 감싸서  block으로 만드는거 같음</p>
 
 <p name='name_p'></p>
-<p>audio 태그를 이용한 audio 재생 - autoplay</p> 
+<p name='name_p_audio'>audio 태그를 이용한 audio 재생 - autoplay</p> 
 <audio autoplay controls  class='show_inline'>
     <script>
     document.write(` <source src= ' ${server_music}hush.mp3' type="audio/mp3"> `); 
