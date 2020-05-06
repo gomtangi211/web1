@@ -1,29 +1,7 @@
         body{
             font-family: "Malgun Gothic";font-size:13px; 
         }
-        video{
-            display: none;
-        }
-        .change   { /*추가*/
-          font-size: 16px; 
-          border: none;
-          outline: none;
-          color: white;
-          padding: 14px 16px;
-          /* background-color: #4CAF50; */
-          background-color: dimgrey;
-          font: inherit; /* Important for vertical align on mobile phones */
-          margin: 0; /* Important for vertical align on mobile phones */ 
-        }    
-        .togglebtn {
-        font-size: 16px; 
-        border: none;
-        outline: none;
-        /* color: white; */
-        padding: 14px 16px;
-       /* background-color: dimgrey; */
-         font: inherit; /* Important for vertical align on mobile phones */
-        margin: 0; /* Important for vertical align on mobile phones */
-        }
-       .show {display:block;} 
+ 
+       .show_block {display:block;}
+       .show_inline {display:inline;} 
        .hide {display:none;}   
