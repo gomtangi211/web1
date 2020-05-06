@@ -1,4 +1,62 @@
 var ar_video= [];
+var selectID = -1;
+
+
+        function togglefunc(e)
+        {
+        var id = e.id;
+        if(id == 'tog_title')
+        {
+            $('.vid_title').toggleClass('hide');
+                       
+        }
+        else
+        {
+            $('.vid_singer').toggleClass('hide');
+        }
+        e.classList.toggle("change");
+        }    
+
+          var selectID = -1;
+            function showVideo(id, visual)
+            {
+                if(visual ==true)
+                {
+                $('#'+id).hide();
+                $('#video'+id).show();
+                }
+                else
+                {
+                $('#'+id).show();
+                $('#video'+id).hide();
+                }
+            }
+            
+            function OnImageClick(e){
+                var id = e.getAttribute('id');
+                
+                
+                if(selectID != -1)
+                {
+                    var videoElement = document.getElementById('video'+selectID);
+        
+                    videoElement.pause();
+                    var sources = videoElement.getElementsByTagName('source');
+                    var src= sources[0].getAttribute('src');
+                    sources[0].removeAttribute('src'); 
+                    videoElement.load();
+                    sources[0].setAttribute('src',src );
+
+                    showVideo(selectID, false);
+                }
+                
+                $('#dashboard').text(id + '선택'+ selectID +'예전');
+                showVideo(id, true);
+                document.getElementById('video'+id).play();
+                selectID =id;
+
+            }
+
 
 function OnLoad()
 {
@@ -36,9 +94,12 @@ var url="https://spreadsheets.google.com/feeds/list/1khF2rAKDuOz9jbs3VLvIoOKVgyV
 
    $('#id_video').append(`
      <div  style='float:left'>
-     <p>${ar_video[i].title}</p>
-     <img width=${width} height=${height} src=${ar_video[i].code } >
-     <p>${ar_video[i].tag}</p>
+     <p class='vid_title hide'>${ar_video[i].title}</p>
+     <img id=${i} width=${width} height=${height} src=${ar_video[i].code }  onclick='OnImageClick(this)' >
+             <video id= 'video${i}'  width=${width} height=${height} controls preload='none'>
+                    <source src='../video/T-ara _ DAY BY DAY [Dance Cover by Macchiato]_Trim.mp4' type='video/mp4'  >
+            </video>    
+     <p class='vid_singer hide'>${ar_video[i].tag}</p>
      </div>
      `);
    }       
