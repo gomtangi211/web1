@@ -1,6 +1,6 @@
 var ar_video= [];
 var selectID = -1;
-
+var server_video='http://61.75.10.129:81/projects/video/';
 
         function togglefunc(e)
         {
@@ -97,7 +97,7 @@ var url="https://spreadsheets.google.com/feeds/list/1khF2rAKDuOz9jbs3VLvIoOKVgyV
      <p class='vid_title hide'>${ar_video[i].title}</p>
      <img id=${i} width=${width} height=${height} src=${ar_video[i].code }  onclick='OnImageClick(this)' >
              <video id= 'video${i}'  width=${width} height=${height} controls preload='none'>
-                    <source src='../video/T-ara _ DAY BY DAY [Dance Cover by Macchiato]_Trim.mp4' type='video/mp4'  >
+                    <source src='${server_video}T-ara _ DAY BY DAY [Dance Cover by Macchiato]_Trim.mp4' type='video/mp4'  >
             </video>    
      <p class='vid_singer hide'>${ar_video[i].tag}</p>
      </div>
