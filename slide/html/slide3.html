@@ -1,0 +1,214 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<link rel = 'stylesheet' href='../css/normalize.css'>
+<script src="../js/vendor/modernizr.custom.min.js"></script>
+<script src="../js/vendor/jquery-1.10.2.min.js"></script>
+<script src="../js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+
+<style>
+.slideshow {
+    overflow: hidden;
+    position: relative;
+    min-width: 960px;
+    height: 465px;
+    background:#000;
+}    
+.slideshow_slides{
+    position:absolute;
+    width:100%;
+   height:100%;
+}
+.slideshow_slides a{
+   position:absolute;
+       width:100%;
+   height:100%;
+   text-align:center;  //image 중앙에 
+}
+.slideshow_nav a {
+   width:71px;
+   height:71px;
+   position:absolute;
+   left:50%;
+   top:50%;
+   transform:translateY(-50%);
+   background:url(../img/sprites.png) no-repeat;
+   text-indent:-9999em;
+}
+
+.slideshow_nav  a.disabled {display:none;}
+
+.slideshow_nav  a.prev{
+   background-position: 0 -20px;
+   margin-left:-480px;
+}
+.slideshow_nav a.next{
+   background-position: -81px -20px;
+   margin-left:409px;
+  // margin-right:10px;
+}
+
+.indicator{
+   position:absolute;
+   bottom:20px;
+   left:0px ;
+   right:0px ;
+   display:flex;
+   justify-content:center;
+}
+.indicator a {
+   width:8px;
+   height:8px;
+   margin:0 5px;
+   background:url(../img/sprites.png) no-repeat -114px -4px;
+   text-indent:-9993em;
+}
+
+.indicator a.active {
+   background-position: -134px -4px;
+}
+</style>
+<script>
+$(function () {
+    //변수에 대소문자도 구별하네
+    var container = $('.slideshow'),
+         slideGroup = container.find('.slideshow_slides'),
+         slides = slideGroup.find('a'),
+         nav = container.find('.slideshow_nav'),
+         indicator=  container.find('.indicator'),
+         slideCount =  slides.length,
+         duration = 500,
+         easing= 'easeInOutExpo',
+         indicatorHtml = '' ,
+         currentIndex=0 
+          ;
+
+        console.log(nav);
+        //슬라이드를 가로로 배열  
+        slides.each( function(i) {
+             var newLeft = i*100 + '%';
+             $(this).css({left: newLeft});
+
+             indicatorHtml += '<a href="">' +(i+1)  + '</a>';
+             //console.log(indicatorHtml);          
+        });  
+        indicator.html(indicatorHtml);
+       function  goToSlide(index) {
+          //i 0 left:0%,  i 1 left:-100%, i2 left: -200%
+          slideGroup.animate({left:-100*index+'%'}, duration, easing);
+          currentIndex = index;
+
+          updateNav(); //처음인지, 마지막 검사.
+       }
+      updateNav(); 
+  
+      ///
+     slideGroup.find('a').click(function(e) {
+       e.preventDefault();
+    });
+ 
+       ///
+      nav.find('a').click(function(e) {
+          e.preventDefault();
+         //jquery는 this로받는구나
+          if( $(this).hasClass('prev')) {
+               goToSlide(currentIndex-1);
+          }
+          else
+          {
+               goToSlide(currentIndex+1);
+         }
+     }); 
+    //인디케이터로 이동
+    // 클릭한게 몇번째 요소인지    $(this).index();
+   indicator.find('a').click( function(e) {
+      e.preventDefault();
+      var idx = $(this).index();
+     goToSlide(idx);
+
+   });    
+     
+   function updateNav() {
+     var navPrev =  nav.find('.prev');
+     var navNext =  nav.find('.next');
+
+     if(currentIndex ==0) {
+        navPrev.addClass('disabled');
+     }
+     else
+     { 
+       navPrev.removeClass('disabled');
+     }
+     if(currentIndex== slideCount-1 ) {
+          navNext.addClass('disabled');
+      }else {
+          navNext.removeClass('disabled');   
+      }
+    
+    indicator.find('a').eq(currentIndex).addClass('active').siblings().removeClass('active');
+  } 
+
+var click_down= false;
+var downPos ;
+var movePos;
+
+  container.mousedown( function(e) {
+     e.preventDefault();
+//alert(e.clientX);
+     click_down = true;
+     downPos = e.clientX;
+ //
+      console.log('mousedown');
+  })
+  .mousemove( function( e) {
+    movePos = e.clientX- downPos ;
+     
+    if(click_down == true) 
+    {
+    // alert(movePos);
+      slideGroup.animate({left: movePos }, 0, easing);
+      console.log( movePos + ' : 움직임');
+    }
+  })
+  .mouseup(function() {
+      click_down = false;
+      console.log('mouseup');
+  });
+  
+
+});
+
+
+</script>
+</head>
+
+<body>
+
+<div  class='slideshow'> 
+    <div class='slideshow_slides'>
+            <a href=''><img src="../img/slide-1.jpg" alt="slide1" width="1600" height="465"></a>
+            <a href=''><img src="../img/slide-2.jpg" alt="slide2" width="1600" height="465"></a>
+            <a href=''><img src="../img/slide-3.jpg" alt="slide3" width="1600" height="465"></a>
+            <a href=''><img src="../img/slide-4.jpg" alt="slide4" width="1600" height="465"></a>
+     </div>
+     <div class='slideshow_nav'>
+           <a href='' class='prev'  >prev </a>
+           <a href='' class='next'  >next </a>
+      </div>
+      <div class='indicator'>
+<!--
+           <a href=''>1<a>
+
+           <a href=''>2<a>
+           <a href=''>3<a>
+           <a href=''>4<a>
+-->
+      </div>
+
+</div>
+
+</body>
+
+
+
+</html>

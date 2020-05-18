@@ -1,0 +1,35 @@
+<html>
+
+
+<head>
+<meta charset='utf-8'>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel='stylesheet' href='css/slide.css'>
+<script src='js/slide.js'> </script>
+<link rel='stylesheet' href='css/slide2.css'>
+<script src='js/slide2.js'> </script>
+
+<script>
+function LoadComponent()
+{
+    var slide = $('#id_slide');
+    //Slide1Component(slide);
+     Slide2Component($('#id_slide2' ));
+}
+</script>
+
+</head>
+
+<body  onload='LoadComponent()'>
+<p>슬라이드 쇼 예제</p>
+ 
+
+<div id ='id_slide'  >
+
+</div>
+<div id='id_slide2'>
+</div>
+
+</body>
+
+</html>
