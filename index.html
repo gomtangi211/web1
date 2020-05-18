@@ -1,16 +1,18 @@
-<html>
-<head>
-<meta charset='utf-8'>
-<link rel ='stylesheet' type='text/css' href='css/style.css'/>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<!-- saved from url=(0032)http://61.75.10.129:81/projects/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="./index_files/style.css">
+<script src="./index_files/jquery-latest.js.다운로드"></script>
 
 <script>
 //1920x1080
 //640x360
 //320x240
-
-var server_video='http://61.75.10.129:81/projects/video/';
-var server_music='http://61.75.10.129:81/projects/';
+//61.75.10.129
+//112.171.82.38
+var server_video='http://112.171.82.38:81/projects/video/';
+var server_music='http://112.171.82.38:81/projects/';
 
 function onbutton()
 {
@@ -37,39 +39,43 @@ var p = $('p[name=name_p]').text(c);
 </head>
 
 <body>
+<p> inline block 테스트   http:// ..  / </p>
+<p>&nbsp;</p>
 <p> div태그 없이 하니까 연결 되어지네</p>
 <p> div태그 있으면 비디오가 밑으로 감</p>
 <p> audio에 inline속성을 주면  비디오가 붙음</p>
-<p> audio에 block속성을 주면 비디오가 다음 칸으로 내려감<p>
-<p> 보통 요소에 속성은 inline인거 같음</p>
+<p> audio에 block속성을 주면 비디오가 다음 칸으로 내려감</p><p>
+</p><p> 보통 요소에 속성은 inline인거 같음</p>
 <p> div태그를 감싸서  block으로 만드는거 같음</p>
 <p> video를 block 주니까 밑으로 내려가 지고 버튼까지 밑으로 내려감</p>
 <p> block는 한줄을 전부 차지하는구나</p>
 
-<p name='name_p'></p>
-<p name='name_p_audio'>audio 태그를 이용한 audio 재생 - autoplay</p> 
-<audio autoplay controls  class='show_block'>
+<p name="name_p">show_block</p>
+<p name="name_p_audio">audio 태그를 이용한 audio 재생 - autoplay</p> 
+<audio autoplay="" controls="" class="show_block">
     <script>
     document.write(` <source src= ' ${server_music}hush.mp3' type="audio/mp3"> `); 
-    </script>
+    </script> <source src=" http://61.75.10.129:81/projects/hush.mp3" type="audio/mp3"> 
      
       </audio>
  
 
-<video controls width="640px" height='360px'  show='show_inline'>    
+<video controls="" width="640px" height="360px" show="show_inline">    
     <script>
     document.write(`<source src='${server_video}T-ara _ DAY BY DAY [Dance Cover by Macchiato]_Trim.mp4'  type="video/mp4">`);
-    </script>
+    </script><source src="http://61.75.10.129:81/projects/video/T-ara _ DAY BY DAY [Dance Cover by Macchiato]_Trim.mp4" type="video/mp4">
     
 </video>
 
  
 
  
-<button onclick='onbutton()'> test
+<button onclick="onbutton()"> test
 </button>
-<div class='div_main'>
+<div class="div_main">
 
 </div>
-</body>
-</html>
+<p>이미지 연속 출력 http:// ..  /view/ </p><p><br></p><p>float는 css에서 정렬하기 위해 사용되는 속성</p><p>예를 들어, 문서에 사진과 그림이 있을때, 그림을 왼쪽이나 오른쪽으로 띄워서 정렬하거나</p><p>각 객체를 오른쪽이나 왼쪽으로 정렬하여 전체 문서를 배치(layout)할때도 사용할수 있다</p><p><br></p><p>줄속에 넣는 태그(inline element)와, 묶음 태그(block element)</p><p>1. span&nbsp;&nbsp;</p><p>2. div&nbsp; &nbsp;&nbsp;</p><p><br></p><p>주의: 절대 위치 요소는 float 속성을 무시</p><p><br></p><p>출처 :&nbsp;https://aboooks.tistory.com/72</p>
+
+
+</body></html>

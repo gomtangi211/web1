@@ -1,6 +1,8 @@
 var ar_video= [];
 var selectID = -1;
-var server_video='http://61.75.10.129:81/projects/video/';
+//var server_video='http://61.75.10.129:81/projects/video/';
+//112.171.82.38
+var server_video='http://112.171.82.38:81/projects/video/';
 
         function togglefunc(e)
         {

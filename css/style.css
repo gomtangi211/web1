@@ -5,3 +5,9 @@
        .show_block {display:block;}
        .show_inline {display:inline;} 
        .hide {display:none;}   
+
+p{
+    
+   line-height:1.0;
+   
+}
